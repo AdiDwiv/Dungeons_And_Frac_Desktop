@@ -172,7 +172,6 @@ public class GridController {
                         //nothing for now
                         break;
                 }
-<<<<<<< HEAD
                
                sp.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             	    @Override
@@ -196,9 +195,7 @@ public class GridController {
                        	 break;
             	    	}
             	    }
-            	}); 
-=======
->>>>>>> 5bc7f8298be50659ac3eb481d1ab497ab87c39cd
+            	});
             }
         });
     }

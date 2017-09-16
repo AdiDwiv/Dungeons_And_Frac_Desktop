@@ -1,4 +1,4 @@
 package resource;
 
-public class Monster {
+public class NPC {
 }

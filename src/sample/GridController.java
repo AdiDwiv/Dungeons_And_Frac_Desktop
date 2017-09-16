@@ -97,6 +97,7 @@ public class GridController {
                              System.out.println("click");
                              Location playerLoc = mapGrid.getPlayer().getLocation();
                              System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
+                             
                              LinkedList<CellState> path = mapGrid.getPath(playerLoc, map[sp.x][sp.y].getLocation());
                              System.out.println(path.size());
                              System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);

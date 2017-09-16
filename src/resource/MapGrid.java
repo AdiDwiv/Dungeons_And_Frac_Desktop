@@ -8,4 +8,6 @@ public class MapGrid {
     public MapGrid(int width, int height) {
         map = new CellState[height][width];
     }
+
+    
 }

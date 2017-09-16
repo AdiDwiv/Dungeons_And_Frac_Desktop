@@ -56,16 +56,14 @@ public class GridController {
         //Test END
 
 
-
         class DataStackPane extends StackPane{
-        	private int x, y;
-        	
-        	public DataStackPane(int x, int y) {
-        		this.x = x;
-        		this.y = y;
-        	}
+            private int x, y;
+
+            public DataStackPane(int x, int y) {
+                this.x = x;
+                this.y = y;
+            }
         }
-        
 
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {

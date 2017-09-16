@@ -93,8 +93,22 @@ public class GridController {
                sp.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             	    @Override
             	    public void handle(MouseEvent mouseEvent) {
-            	    	if(map[sp.x][sp.y].getState() == State.PLAYER) {
-            	  
+            	    	switch (map[sp.x][sp.y].getState()) {
+            	    	 case VACANT:
+            	    	 //TODO: move player
+               	    	 break;
+            	    	 case OBSTACLE:
+            	    	 //nothing for now
+                   	     break;
+            	    	 case PLAYER:
+            	    	 //nothing for now
+            	    	 break;
+            	    	 case OTHER:
+            	    	 //TODO: npcs
+                       	 break;
+                       	 default:
+                       	//nothing for now
+                       	 break;
             	    	}
             	    }
             	}); 

@@ -41,6 +41,7 @@ public class LaunchScreen {
         newGame.setAlignment(Pos.CENTER);
         newGame.setStyle("-fx-background-color: #C0C0C0;");
         buttonGrid.add(newGame, 1, 1);
+        
 
         Button loadGame = new Button("Load Game");
         loadGame.setAlignment(Pos.CENTER);

@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Monster extends Character {
     int hp;
-    LinkedList<String> reducedExpressions;
+    public LinkedList<String> reducedExpressions;
 
     public Monster(String name,String display,String imageCode) {
        super(name, display, imageCode);

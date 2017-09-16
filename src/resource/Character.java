@@ -11,4 +11,8 @@ public class Character {
         this.display = display;
         this.imageCode = imageCode;
     }
+
+    public String getImageCode() {
+        return imageCode;
+    }
 }

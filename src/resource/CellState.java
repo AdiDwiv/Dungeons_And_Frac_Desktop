@@ -5,7 +5,7 @@ public class CellState {
     String imageCode;
     Location location;
 
-    Boolean isOccupied;
+    public Boolean isOccupied;
     Character occupier;
 
     public CellState() {
@@ -41,5 +41,9 @@ public class CellState {
     public void occupy(Character c) {
         isOccupied = true;
         occupier = c;
+    }
+
+    public Character getOccupier() {
+        return occupier;
     }
 }

@@ -7,10 +7,7 @@ import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import resource.CellState;
-import resource.MapGrid;
-import resource.Player;
-import resource.State;
+import resource.*;
 
 import javax.swing.text.View;
 
@@ -36,10 +33,6 @@ public class GridController {
             }
         }
 
-        String imageCode2 = "";
-        map[1][2].occupy(new Player("TestBoi", "Fight", ""));
-        map[1][2].occupy(new Player("MonsterTest", "Fight", ""));
-
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
                 switch (map[i][j].getState()) {
@@ -53,6 +46,9 @@ public class GridController {
             }
         }
 
+        //Occupying this
+        map[2][4].occupy(new Player("Boi", "bitch", ""));
+        map[7][8].occupy(new Monster("Mon", "bitchshah", "monster.png"));
         //Test END
 
 
@@ -74,17 +70,16 @@ public class GridController {
                 iv1.setFitWidth(50);
 
                 DataStackPane sp = new DataStackPane(i,j);
-               if(map[i][j].getState() == State.PLAYER || map[i][j].getState() == State.OTHER) {
-            	   Image imP = new Image("./resource/media/"+imageCode2);
+                if(map[i][j].isOccupied) {
+                    System.out.println("Bitch "+i+" "+j+" "+map[i][j].getOccupier().getImageCode());
+                    Image imP = new Image("./resource/media/"+map[i][j].getOccupier().getImageCode());
                     ImageView iv2 = new ImageView();
                     iv2.setFitHeight(25);
                     iv2.setFitWidth(25);
                     iv2.setImage(imP);
                     //TEST END
                     sp.getChildren().addAll(iv1, iv2);
-                    //Button button = new Button("Button "+i+" "+j);
                     gridPane.add(sp, j, i, 1, 1);
-                    //gridPane.setGridLinesVisible(true);
                 } else  {
                    sp.getChildren().addAll(iv1);
                     gridPane.add(sp, j, i, 1, 1);
@@ -100,12 +95,6 @@ public class GridController {
             	    	 case OBSTACLE:
             	    	 //nothing for now
                    	     break;
-            	    	 case PLAYER:
-            	    	 //nothing for now
-            	    	 break;
-            	    	 case OTHER:
-            	    	 //TODO: npcs
-                       	 break;
                        	 default:
                        	//nothing for now
                        	 break;

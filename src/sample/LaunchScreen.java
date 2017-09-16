@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,15 +10,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-
-
 public class LaunchScreen {
-	public static GridPane getLaunch() {
-        
+	public static GridPane getLaunch(Main m) {
+		
+		Stage ps = m.getPstage();
+
 		GridPane logoGrid = new GridPane();
 		logoGrid.setAlignment(Pos.TOP_CENTER);
 		logoGrid.setHgap(10);
@@ -56,8 +56,22 @@ public class LaunchScreen {
         newGame.setMinWidth(100);
         loadGame.setMinWidth(100);
         howToPlay.setMinWidth(100);
+       
+        EventHandler<ActionEvent> eventHandler = new EventHandler<ActionEvent>() { 
+           @Override 
+           public void handle(ActionEvent e) { 
+        	   if (e.getSource()==newGame) {
+                   ps.setScene(new Scene(GridController.getGrid(), 300, 275));
+        	   }
+               else {
+               }   
+        	   }     
+        };  
+        
+        newGame.setOnAction(eventHandler);
         
         return buttonGrid;
 	}
-
+	
+	
 }

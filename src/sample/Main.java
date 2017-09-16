@@ -12,16 +12,27 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	
+	private static Stage pstage;
 
-    @Override
+	@Override
     public void start(Stage primaryStage) throws Exception{
+    	pstage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Dungeons and fractions");
-        primaryStage.setScene(new Scene(GridController.getGrid(), 300, 275));
+        primaryStage.setTitle("Dungeons and Fractions");
+        Scene launchScene = new Scene(LaunchScreen.getLaunch(this), 300, 275);
+        primaryStage.setScene(launchScene);
         primaryStage.show();
+        
     }
 
     public static void main(String[] args) {
     		launch(args);
     }
+    
+
+    public static Stage getPstage() {
+		return pstage;
+	}
+
 }

@@ -1,12 +1,12 @@
 package resource;
 
-public class Character {
+public class GCharacter {
 
     String name;
     String display;
     String imageCode;
 
-    public Character(String name, String display, String imageCode) {
+    public GCharacter(String name, String display, String imageCode) {
         this.name = name;
         this.display = display;
         this.imageCode = imageCode;

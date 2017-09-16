@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import resource.*;
 
 import javax.swing.text.View;
+import java.lang.Character;
 import java.util.LinkedList;
 
 public class GridController {
@@ -55,6 +56,71 @@ public class GridController {
         //Test END
 
 
+//        class DataStackPane extends StackPane{
+//            private int x, y;
+//
+//            public DataStackPane(int x, int y) {
+//                this.x = x;
+//                this.y = y;
+//            }
+//        }
+
+        for(int i = 0; i < map.length; i++) {
+            for(int j = 0; j < map[0].length; j++) {
+//                Image image = new Image("./resource/media/"+map[i][j].getImageCode());
+//                ImageView iv1 = new ImageView();
+//                iv1.setImage(image);
+//                iv1.setFitHeight(50);
+//                iv1.setFitWidth(50);
+//
+//                DataStackPane sp = new DataStackPane(i,j);
+//                if(map[i][j].isOccupied) {
+//                    System.out.println("Bitch "+i+" "+j+" "+map[i][j].getOccupier().getImageCode());
+//                    Image imP = new Image("./resource/media/"+map[i][j].getOccupier().getImageCode());
+//                    ImageView iv2 = new ImageView();
+//                    iv2.setFitHeight(25);
+//                    iv2.setFitWidth(25);
+//                    iv2.setImage(imP);
+//                    //TEST END
+//                    sp.getChildren().addAll(iv1, iv2);
+//                    gridPane.add(sp, j, i, 1, 1);
+//                } else  {
+//                   sp.getChildren().addAll(iv1);
+//                    gridPane.add(sp, j, i, 1, 1);
+//                }
+//
+//               sp.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+//            	    @Override
+//            	    public void handle(MouseEvent mouseEvent) {
+//            	    	switch (map[sp.x][sp.y].getState()) {
+//            	    	 case VACANT:
+//            	    	 //TODO: move player
+//                             System.out.println("click");
+//                             Location playerLoc = mapGrid.getPlayer().getLocation();
+//                             System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
+//                             LinkedList<CellState> path = mapGrid.getPath(playerLoc, map[sp.x][sp.y].getLocation());
+//                             System.out.println(path.size());
+//                             System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
+//               	    	 break;
+//            	    	 case OBSTACLE:
+//            	    	 //nothing for now
+//                   	     break;
+//                       	 default:
+//                       	//nothing for now
+//                       	 break;
+//            	    	}
+//            	    }
+//            	});
+                populateCell(i, j);
+            }
+        }
+        return gridPane;
+    }
+
+
+    public static void populateCell(int i, int j) {
+        CellState[][] map = mapGrid.map;
+
         class DataStackPane extends StackPane{
             private int x, y;
 
@@ -64,29 +130,49 @@ public class GridController {
             }
         }
 
-        for(int i = 0; i < map.length; i++) {
-            for(int j = 0; j < map[0].length; j++) {
-                Image image = new Image("./resource/media/"+map[i][j].getImageCode());
-                ImageView iv1 = new ImageView();
-                iv1.setImage(image);
-                iv1.setFitHeight(50);
-                iv1.setFitWidth(50);
+        Image image = new Image("./resource/media/"+map[i][j].getImageCode());
+        ImageView iv1 = new ImageView();
+        iv1.setImage(image);
+        iv1.setFitHeight(50);
+        iv1.setFitWidth(50);
 
-                DataStackPane sp = new DataStackPane(i,j);
-                if(map[i][j].isOccupied) {
-                    System.out.println("Bitch "+i+" "+j+" "+map[i][j].getOccupier().getImageCode());
-                    Image imP = new Image("./resource/media/"+map[i][j].getOccupier().getImageCode());
-                    ImageView iv2 = new ImageView();
-                    iv2.setFitHeight(25);
-                    iv2.setFitWidth(25);
-                    iv2.setImage(imP);
-                    //TEST END
-                    sp.getChildren().addAll(iv1, iv2);
-                    gridPane.add(sp, j, i, 1, 1);
-                } else  {
-                   sp.getChildren().addAll(iv1);
-                    gridPane.add(sp, j, i, 1, 1);
+        DataStackPane sp = new DataStackPane(i,j);
+        if(map[i][j].isOccupied) {
+            System.out.println("Bitch "+i+" "+j+" "+map[i][j].getOccupier().getImageCode());
+            Image imP = new Image("./resource/media/"+map[i][j].getOccupier().getImageCode());
+            ImageView iv2 = new ImageView();
+            iv2.setFitHeight(25);
+            iv2.setFitWidth(25);
+            iv2.setImage(imP);
+            //TEST END
+            sp.getChildren().addAll(iv1, iv2);
+            gridPane.add(sp, j, i, 1, 1);
+        } else  {
+            sp.getChildren().addAll(iv1);
+            gridPane.add(sp, j, i, 1, 1);
+        }
+
+        sp.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                switch (map[sp.x][sp.y].getState()) {
+                    case VACANT:
+                        //TODO: move player
+                        System.out.println("click");
+                        Location playerLoc = mapGrid.getPlayer().getLocation();
+                        System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
+                        LinkedList<CellState> path = mapGrid.getPath(playerLoc, map[sp.x][sp.y].getLocation());
+                        System.out.println(path.size());
+                        System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
+                        break;
+                    case OBSTACLE:
+                        //nothing for now
+                        break;
+                    default:
+                        //nothing for now
+                        break;
                 }
+<<<<<<< HEAD
                
                sp.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             	    @Override
@@ -111,10 +197,20 @@ public class GridController {
             	    	}
             	    }
             	}); 
+=======
+>>>>>>> 5bc7f8298be50659ac3eb481d1ab497ab87c39cd
             }
-        }
-        return gridPane;
+        });
     }
 
-   // public static moveCell()
+    public static void moveCell(CellState moveTo) {
+        if(moveTo.getState() == State.VACANT) {
+            CellState playerOri = mapGrid.getPlayer();
+            GCharacter p = playerOri.getOccupier();
+            playerOri.unoccupy();
+            moveTo.occupy(p);
+
+        }
+    }
+
 }

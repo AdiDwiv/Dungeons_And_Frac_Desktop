@@ -6,7 +6,7 @@ public class CellState {
     Location location;
 
     public Boolean isOccupied;
-    Character occupier;
+    GCharacter occupier;
 
     public CellState() {
         state = State.VACANT;
@@ -46,12 +46,17 @@ public class CellState {
         this.imageCode = imageCode;
     }
 
-    public void occupy(Character c) {
+    public void occupy(GCharacter c) {
         isOccupied = true;
         occupier = c;
     }
 
-    public Character getOccupier() {
+    public void unoccupy() {
+        isOccupied = false;
+        occupier = null;
+    }
+
+    public GCharacter getOccupier() {
         return occupier;
     }
 

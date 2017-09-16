@@ -1,7 +1,7 @@
 package resource;
 
 
-public class Player extends Character {
+public class Player extends GCharacter {
 
     int hp;
 

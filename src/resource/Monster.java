@@ -2,7 +2,7 @@ package resource;
 
 import java.util.LinkedList;
 
-public class Monster extends Character {
+public class Monster extends GCharacter {
     int hp;
     public LinkedList<String> reducedExpressions;
 

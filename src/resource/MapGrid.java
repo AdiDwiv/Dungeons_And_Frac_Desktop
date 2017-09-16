@@ -1,7 +1,7 @@
 package resource;
 
 public class MapGrid {
-    CellState[][] map;
+    public CellState[][] map;
     CellState player;
     CellState exit;
 

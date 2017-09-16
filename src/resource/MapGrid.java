@@ -9,5 +9,5 @@ public class MapGrid {
         map = new CellState[height][width];
     }
 
-    
+
 }

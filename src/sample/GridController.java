@@ -7,6 +7,8 @@ import resource.CellState;
 import resource.MapGrid;
 import resource.State;
 
+import javax.swing.text.View;
+
 public class GridController {
 
     // MapGrid mapGrid;
@@ -29,6 +31,7 @@ public class GridController {
             }
         }
 
+
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
                 switch (map[i][j].getState()) {
@@ -41,6 +44,9 @@ public class GridController {
             }
         }
 
+        //TEST
+        map[1][2].setState(State.PLAYER);
+        //
 
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
@@ -49,9 +55,23 @@ public class GridController {
                 iv1.setImage(image);
                 iv1.setFitHeight(50);
                 iv1.setFitWidth(50);
-                //Button button = new Button("Button "+i+" "+j);
-                gridPane.add(iv1, j, i, 1, 1);
-                //gridPane.setGridLinesVisible(true);
+
+               if(map[i][j].getState() == State.PLAYER) {
+                    //TEST
+                    Image imP = new Image("./resource/media/circle.png");
+                    ImageView iv2 = new ImageView();
+                    iv2.setFitHeight(25);
+                    iv2.setFitWidth(25);
+                    iv2.setImage(imP);
+                    //TEST END
+                    StackPane sp = new StackPane();
+                    sp.getChildren().addAll(iv1, iv2);
+                    //Button button = new Button("Button "+i+" "+j);
+                    gridPane.add(sp, j, i, 1, 1);
+                    //gridPane.setGridLinesVisible(true);
+                } else  {
+                    gridPane.add(iv1, j, i, 1, 1);
+                }
             }
         }
 

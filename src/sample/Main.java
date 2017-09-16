@@ -20,7 +20,7 @@ public class Main extends Application {
     	pstage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Dungeons and Fractions");
-        Scene launchScene = new Scene(LaunchScreen.getLaunch(), 300, 275);
+        Scene launchScene = new Scene(LaunchScreen.getLaunch(), 800, 800);
         primaryStage.setScene(launchScene);
         primaryStage.show();
         

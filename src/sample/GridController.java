@@ -35,6 +35,9 @@ public class GridController {
             }
         }
 
+        String imageCode2 = "";
+        map[1][2].setState(State.PLAYER);
+        map[4][6].setState(State.OTHER);
 
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
@@ -44,15 +47,21 @@ public class GridController {
                      case OBSTACLE: map[i][j].setImageCode("WaterSample.png");
                      //case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");
                         break;
+                    case PLAYER: map[i][j].setImageCode("GrassSample.jpg");
+                                 imageCode2 = "Circle.png";
+                                 break;
+                    case OTHER:  map[i][j].setImageCode("GrassSample.jpg");
+                                 imageCode2 = "Circle.png";
+                                 break;
                     default:
                 }
             }
         }
 
-
-        map[1][2].setState(State.PLAYER);
         //Test END
-        
+
+
+
         class DataStackPane extends StackPane{
         	private int x, y;
         	
@@ -72,10 +81,8 @@ public class GridController {
                 iv1.setFitWidth(50);
 
                 DataStackPane sp = new DataStackPane(i,j);
-               if(map[i][j].getState() == State.PLAYER) {
-                    //TEST
-                    //Image imP = new Image("./resource/media/circle.png");
-            	   Image imP = new Image("./resource/media/Circle.jpg");
+               if(map[i][j].getState() == State.PLAYER || map[i][j].getState() == State.OTHER) {
+            	   Image imP = new Image("./resource/media/"+imageCode2);
                     ImageView iv2 = new ImageView();
                     iv2.setFitHeight(25);
                     iv2.setFitWidth(25);

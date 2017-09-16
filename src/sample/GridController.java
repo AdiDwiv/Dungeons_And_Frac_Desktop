@@ -18,7 +18,7 @@ public class GridController {
         CellState[][] map = mapGrid.map;
         GridPane gridPane = new GridPane();
 
-        //Test
+        //Test Default level
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
                 map[i][j] = new CellState();
@@ -45,9 +45,9 @@ public class GridController {
             }
         }
 
-        //TEST
+
         map[1][2].setState(State.PLAYER);
-        //
+        //Test END
 
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
@@ -57,6 +57,7 @@ public class GridController {
                 iv1.setFitHeight(50);
                 iv1.setFitWidth(50);
 
+                StackPane sp = new StackPane();
                if(map[i][j].getState() == State.PLAYER) {
                     //TEST
                     Image imP = new Image("./resource/media/circle.png");
@@ -66,12 +67,12 @@ public class GridController {
                     iv2.setFitWidth(25);
                     iv2.setImage(imP);
                     //TEST END
-                    StackPane sp = new StackPane();
                     sp.getChildren().addAll(iv1, iv2);
                     //Button button = new Button("Button "+i+" "+j);
                     gridPane.add(sp, j, i, 1, 1);
                     //gridPane.setGridLinesVisible(true);
                 } else  {
+                   sp.getChildren().addAll(iv1);
                     gridPane.add(iv1, j, i, 1, 1);
                 }
             }

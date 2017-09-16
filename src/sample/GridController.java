@@ -48,12 +48,6 @@ public class GridController {
                      case OBSTACLE: map[i][j].setImageCode("WaterSample.png");
                      //case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");
                         break;
-                    case PLAYER: map[i][j].setImageCode("GrassSample.jpg");
-                                 imageCode2 = "Circle.png";
-                                 break;
-                    case OTHER:  map[i][j].setImageCode("GrassSample.jpg");
-                                 imageCode2 = "Circle.png";
-                                 break;
                     default:
                 }
             }

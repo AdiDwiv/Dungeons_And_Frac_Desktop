@@ -1,7 +1,7 @@
 package resource;
 
 public class NPC {
-<<<<<<< HEAD
+
     String name;
     String display;
     String imageCode;
@@ -11,6 +11,4 @@ public class NPC {
         this.display = display;
         this.imageCode = imageCode;
     }
-=======
->>>>>>> 552667280522fa29678d9cad611e3f00e7e643b4
 }

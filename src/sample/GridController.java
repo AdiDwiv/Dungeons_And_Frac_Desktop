@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import resource.CellState;
 import resource.MapGrid;
+import resource.Player;
 import resource.State;
 
 import javax.swing.text.View;
@@ -36,8 +37,8 @@ public class GridController {
         }
 
         String imageCode2 = "";
-        map[1][2].setState(State.PLAYER);
-        map[4][6].setState(State.OTHER);
+        map[1][2].occupy(new Player("TestBoi", "Fight", ""));
+        map[1][2].occupy(new Player("MonsterTest", "Fight", ""));
 
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {

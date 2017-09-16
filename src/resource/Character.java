@@ -1,12 +1,12 @@
 package resource;
 
-public class NPC {
+public class Character {
 
     String name;
     String display;
     String imageCode;
 
-    public  NPC(String name,String display,String imageCode) {
+    public Character(String name, String display, String imageCode) {
         this.name = name;
         this.display = display;
         this.imageCode = imageCode;

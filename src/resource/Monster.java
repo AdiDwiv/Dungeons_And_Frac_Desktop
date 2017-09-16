@@ -2,11 +2,11 @@ package resource;
 
 import java.util.LinkedList;
 
-public class Monster extends NPC {
+public class Monster extends Character {
     int hp;
     LinkedList<String> reducedExpressions;
 
-    public  Monster(String name,String display,String imageCode) {
+    public Monster(String name,String display,String imageCode) {
        super(name, display, imageCode);
        reducedExpressions = new LinkedList<String >();
     }

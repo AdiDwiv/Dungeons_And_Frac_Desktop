@@ -5,10 +5,15 @@ public class CellState {
     String imageCode;
     Location location;
 
+    Boolean isOccupied;
+    Character occupier;
+
     public CellState() {
         state = State.VACANT;
         imageCode = "";
         location = new Location();
+        isOccupied = false;
+        occupier = null;
     }
 
     public CellState(State cstate, String imageC, Location loc) {
@@ -33,4 +38,8 @@ public class CellState {
         this.imageCode = imageCode;
     }
 
+    public void occupy(Character c) {
+        isOccupied = true;
+        occupier = c;
+    }
 }

@@ -13,9 +13,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class LaunchScreen {
-	public static GridPane getLaunch(Main m) {
+	public static GridPane getLaunch() {
 		
-		Stage ps = m.getPstage();
+		Stage ps = Main.pstage;
 
 		GridPane logoGrid = new GridPane();
 		logoGrid.setAlignment(Pos.TOP_CENTER);
@@ -63,12 +63,14 @@ public class LaunchScreen {
         	   if (e.getSource()==newGame) {
                    ps.setScene(new Scene(GridController.getGrid(), 300, 275));
         	   }
-               else {
-               }   
+               else  if (e.getSource()==howToPlay) {
+            	   ps.setScene(new Scene(InstructionScreen.getInstructions(), 300, 275));
+               }  
         	   }     
         };  
         
         newGame.setOnAction(eventHandler);
+        howToPlay.setOnAction(eventHandler);
         
         return buttonGrid;
 	}

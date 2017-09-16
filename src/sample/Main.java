@@ -13,14 +13,14 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	private static Stage pstage;
+	public static Stage pstage;
 
 	@Override
     public void start(Stage primaryStage) throws Exception{
     	pstage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Dungeons and Fractions");
-        Scene launchScene = new Scene(LaunchScreen.getLaunch(this), 300, 275);
+        Scene launchScene = new Scene(LaunchScreen.getLaunch(), 300, 275);
         primaryStage.setScene(launchScene);
         primaryStage.show();
         

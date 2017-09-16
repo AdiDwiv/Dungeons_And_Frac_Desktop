@@ -38,6 +38,7 @@ public class GridController {
                     case VACANT: map[i][j].setImageCode("GrassSample.jpg");
                         break;
                     case OBSTACLE: map[i][j].setImageCode("WaterSample.png");
+                    // case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");
                         break;
                     default:
                 }
@@ -59,6 +60,7 @@ public class GridController {
                if(map[i][j].getState() == State.PLAYER) {
                     //TEST
                     Image imP = new Image("./resource/media/circle.png");
+            	   //Image imP = new Image("./resource/media/Circle.jpg");
                     ImageView iv2 = new ImageView();
                     iv2.setFitHeight(25);
                     iv2.setFitWidth(25);

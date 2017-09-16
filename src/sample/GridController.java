@@ -73,7 +73,7 @@ public class GridController {
                     //gridPane.setGridLinesVisible(true);
                 } else  {
                    sp.getChildren().addAll(iv1);
-                    gridPane.add(iv1, j, i, 1, 1);
+                    gridPane.add(sp, j, i, 1, 1);
                 }
             }
         }

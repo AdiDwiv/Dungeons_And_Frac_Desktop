@@ -11,8 +11,15 @@ public class MapGrid {
         map = new CellState[height][width];
     }
 
+	public CellState getPlayer() {
+		return player;
+	}
 
-    public LinkedList<CellState> getPath(Location start, Location end) {
+	public void setPlayer(CellState player) {
+		this.player = player;
+	}
+
+	public LinkedList<CellState> getPath(Location start, Location end) {
     		LinkedList<CellState> path = new LinkedList<CellState>();
     		path.add(map[start.x][start.y]);
     		int xDistance = end.x - start.x;

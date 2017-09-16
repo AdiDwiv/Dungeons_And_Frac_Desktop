@@ -16,6 +16,14 @@ public class CellState {
         occupier = null;
     }
 
+    public CellState(Location loc) {
+        state = State.VACANT;
+        imageCode = "";
+        location = loc;
+        isOccupied = false;
+        occupier = null;
+    }
+
     public CellState(State cstate, String imageC, Location loc) {
         state = cstate;
         imageCode = imageC;
@@ -45,5 +53,9 @@ public class CellState {
 
     public Character getOccupier() {
         return occupier;
+    }
+
+    public Location getLocation() {
+        return location;
     }
 }

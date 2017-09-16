@@ -1,7 +1,11 @@
 package sample;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.layout.*;
 import javafx.scene.image.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import resource.CellState;
 import resource.MapGrid;
@@ -37,8 +41,8 @@ public class GridController {
                 switch (map[i][j].getState()) {
                     case VACANT: map[i][j].setImageCode("GrassSample.jpg");
                         break;
-                    case OBSTACLE: map[i][j].setImageCode("WaterSample.png");
-                    // case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");
+                    //case OBSTACLE: map[i][j].setImageCode("WaterSample.png");
+                     case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");
                         break;
                     default:
                 }
@@ -48,6 +52,16 @@ public class GridController {
 
         map[1][2].setState(State.PLAYER);
         //Test END
+        
+        class DataStackPane extends StackPane{
+        	private int x, y;
+        	
+        	public DataStackPane(int x, int y) {
+        		this.x = x;
+        		this.y = y;
+        	}
+        }
+        
 
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
@@ -57,11 +71,11 @@ public class GridController {
                 iv1.setFitHeight(50);
                 iv1.setFitWidth(50);
 
-                StackPane sp = new StackPane();
+                DataStackPane sp = new DataStackPane(i,j);
                if(map[i][j].getState() == State.PLAYER) {
                     //TEST
-                    Image imP = new Image("./resource/media/circle.png");
-            	   //Image imP = new Image("./resource/media/Circle.jpg");
+                    //Image imP = new Image("./resource/media/circle.png");
+            	   Image imP = new Image("./resource/media/Circle.jpg");
                     ImageView iv2 = new ImageView();
                     iv2.setFitHeight(25);
                     iv2.setFitWidth(25);
@@ -75,6 +89,15 @@ public class GridController {
                    sp.getChildren().addAll(iv1);
                     gridPane.add(sp, j, i, 1, 1);
                 }
+               
+               sp.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            	    @Override
+            	    public void handle(MouseEvent mouseEvent) {
+            	    	if(map[sp.x][sp.y].getState() == State.PLAYER) {
+            	  
+            	    	}
+            	    }
+            	}); 
             }
         }
 

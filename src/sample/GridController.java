@@ -15,6 +15,7 @@ import resource.*;
 
 import javax.swing.text.View;
 import java.lang.Character;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class GridController {
@@ -87,7 +88,7 @@ public class GridController {
         options1[2][0] = "Divide by 7";
         options1[2][1] = "Not very effective - not necessary to introduce fractions. The monster dodges your attack.";
         QState state1 = new QState(0, "7x = 28", options1);
-<<<<<<< HEAD
+
         String[][] options2 = new String[3][2];
         options1[0][0] = "Multiply by 2";
         options1[0][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
@@ -97,18 +98,14 @@ public class GridController {
         options1[2][1] = "Powerful move! You hit monster for 50 hp!";
         QState state2 = new QState(0, "x = 4", options2);
         
-        Question question1;
+        Question question1 = new Question("7x -4 = 28", new LinkedList<QState>(Arrays.asList(state1, state2)));
         
-=======
-
->>>>>>> 9d089342ad37076303a8d78db8f5f2a7d04148fa
-
         //Occupying this
         Player pl = new Player("Boi", "bitch", "player.png");
         pl.setSideImageCode("playerSide.png");
         map[1][1].occupy(pl);
         mapGrid.setPlayer(map[1][1]);
-        map[7][8].occupy(new Monster("Mon", "bitchshah", "monster.png", null));
+        map[7][8].occupy(new Monster("Mon", "bitchshah", "monster.png", question1));
         //Test END
 
 

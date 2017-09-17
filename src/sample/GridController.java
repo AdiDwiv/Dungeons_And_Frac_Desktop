@@ -52,7 +52,7 @@ public class GridController {
             }
         }
 
-<<<<<<< HEAD
+
 //        for(int i = 0; i < map.length; i++) {
 //            for(int j = 0; j < map[0].length; j++) {
 //                switch (map[i][j].getState()) {
@@ -65,7 +65,7 @@ public class GridController {
 //                }
 //            }
 //        }
-=======
+
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
                 switch (map[i][j].getState()) {
@@ -89,15 +89,14 @@ public class GridController {
         
         
         QState state1 = new QState(0, "7x = 28", options1);
-        
->>>>>>> eda241bd493c937ac2324ceae33b63e9fb095b62
+
 
         //Occupying this
         Player pl = new Player("Boi", "bitch", "player.png");
         pl.setSideImageCode("playerSide.png");
         map[1][1].occupy(pl);
         mapGrid.setPlayer(map[1][1]);
-        map[7][8].occupy(new Monster("Mon", "bitchshah", "monster.png"));
+        map[7][8].occupy(new Monster("Mon", "bitchshah", "monster.png", null));
         //Test END
 
 

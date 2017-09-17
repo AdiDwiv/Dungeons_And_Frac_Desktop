@@ -76,7 +76,7 @@ public class LaunchScreen {
            @Override 
            public void handle(ActionEvent e) { 
         	   if (e.getSource()==newGame) {
-                   ps.setScene(new Scene(GridController.getGrid(), 800, 800));
+                   ps.setScene(new Scene(GridController.getGrid(), 1000, 750));
         	      }
                else  if (e.getSource()==howToPlay) {
             	   ps.setScene(new Scene(InstructionScreen.getInstructions(), 800, 800));

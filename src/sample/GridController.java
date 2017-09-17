@@ -219,7 +219,7 @@ public class GridController {
 
 
     public static void levelMake1() {
-        mapGrid = new MapGrid(15, 15);
+        mapGrid = new MapGrid(20, 15);
         map = mapGrid.map;
         map = mapGrid.map;
         //Test Default level
@@ -227,44 +227,65 @@ public class GridController {
             for(int j = 0; j < map[0].length; j++) {
                 map[i][j] = new CellState(new Location(i,j));
                 map[i][j].setImageCode("GrassBoi.png");
+
+
+                //Thingy
+                //Water
+                if(j >= 6 && j <= 8) {
+                    if((i <=5) || ( i>= 8 && i < map.length)) {
+                        map[i][j].setState(State.OBSTACLE);
+                        map[i][j].setImageCode("waterwhite.png");
+                    } else {
+                        map[i][j].setImageCode("BridgeCompNew.png"); //Bridge
+                    }
+                }
+                if(j >= 9) {
+                    if((i <= 2) || (i >=13)) {
+                        map[i][j].setState(State.OBSTACLE);
+                        map[i][j].setImageCode("bushel.png");
+                    }
+                }
+                if(j >= 15) {
+                    if((i <= 3) || (i <10)) {
+                        map[i][j].setState(State.OBSTACLE);
+                        map[i][j].setImageCode("bushel.png");
+                    }
+                }
+
+                //
             }
         }
 
-        for(int i = 0; i <= 5; i++) {
-            for(int j = 6; j <= 8; j++) {
-                map[i][j].setState(State.OBSTACLE);
-                map[i][j].setImageCode("waterwhite.png");
-            }
-        }
-
-        System.out.println("Test");
-        for(int i = 6; i <= 7; i++) {
-            for(int j = 6; j <= 8; j++) {
-                System.out.println("Testatat");
-                map[i][j].setImageCode("BridgeCompNew.png");
-            }
-        }
-
-        for(int i = 8; i < map.length; i++) {
-            for(int j = 6; j <= 8; j++) {
-                map[i][j].setState(State.OBSTACLE);
-                map[i][j].setImageCode("waterwhite.png");
-            }
-        }
-
-//        for(int i = 0; i < map.length; i++) {
-//            for(int j = 0; j < map[0].length; j++) {
-//                switch (map[i][j].getState()) {
-//                    case VACANT: map[i][j].setImageCode("GrassBoi.png");
-//                        break;
-//                     case OBSTACLE: map[i][j].setImageCode("waterwhite.png");
-//                     //case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");
-//                        break;
-//                    default:
-//                }
+//        for(int i = 0; i <= 5; i++) {
+//            for(int j = 6; j <= 8; j++) {
+//                map[i][j].setState(State.OBSTACLE);
+//                map[i][j].setImageCode("waterwhite.png");
 //            }
 //        }
 
+//        System.out.println("Test");
+//        for(int i = 6; i <= 7; i++) {
+//            for(int j = 6; j <= 8; j++) {
+//                System.out.println("Testatat");
+//                map[i][j].setImageCode("BridgeCompNew.png");
+//            }
+//        }
+
+//        for(int i = 8; i < map.length; i++) {
+//            for(int j = 6; j <= 8; j++) {
+//                map[i][j].setState(State.OBSTACLE);
+//                map[i][j].setImageCode("waterwhite.png");
+//            }
+//        }
+
+//        for(int i = 0; i < 3; i++) {
+//            for(int j = 10; j < map[0].length; j++) {
+//                map[i][j].setState(State.OBSTACLE);
+//                map[i][j].setImageCode("bushel.png");
+//            }
+//        }
+
+    //Questions and stuff
         String[][] options11 = new String[3][2];
         options11[0][0] = "Add 4";
         options11[0][1] = "Powerful move! You hit monster for 50 hp!";
@@ -319,7 +340,7 @@ public class GridController {
         pl.setSideImageCode("playerSide.png");
         map[1][1].occupy(pl);
         mapGrid.setPlayer(map[1][1]);
-        map[7][8].occupy(new Monster("Mon", "bitchshah", "monster.png", question1));
+        map[11][17].occupy(new Monster("Mon", "bitchshah", "monster.png", question1));
         //Test END
 
 

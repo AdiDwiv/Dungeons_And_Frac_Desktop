@@ -26,7 +26,7 @@ public class GridController {
     static Stage ps = Main.pstage;
 
     public static GridPane getGrid() {
-        mapGrid = new MapGrid(10, 10);
+        mapGrid = new MapGrid(20, 20);
         CellState[][] map = mapGrid.map;
         gridPane = new GridPane();
 
@@ -37,7 +37,13 @@ public class GridController {
             }
         }
 
-        for(int i = 6; i <= 8; i++) {
+        for(int i = 6; i < map.length; i++) {
+            for(int j = 3; j <= 5; j++) {
+                map[i][j].setState(State.OBSTACLE);
+            }
+        }
+
+        for(int i = 6; i < map.length; i++) {
             for(int j = 3; j <= 5; j++) {
                 map[i][j].setState(State.OBSTACLE);
             }
@@ -48,7 +54,7 @@ public class GridController {
                 switch (map[i][j].getState()) {
                     case VACANT: map[i][j].setImageCode("GrassBoi.png");
                         break;
-                     case OBSTACLE: map[i][j].setImageCode("WaterSample.png");
+                     case OBSTACLE: map[i][j].setImageCode("waterwhite.png");
                      //case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");
                         break;
                     default:

@@ -69,9 +69,17 @@ public class GridController {
         options1[1][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
         options1[2][0] = "Divide by 7";
         options1[2][1] = "Not very effective - not necessary to introduce fractions. The monster dodges your attack.";
-        
-        
         QState state1 = new QState(0, "7x = 28", options1);
+        String[][] options2 = new String[3][2];
+        options1[0][0] = "Multiply by 2";
+        options1[0][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
+        options1[1][0] = "Subtract 28";
+        options1[1][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
+        options1[2][0] = "Divide by 7";
+        options1[2][1] = "Powerful move! You hit monster for 50 hp!";
+        QState state2 = new QState(0, "x = 4", options2);
+        
+        Question question1;
         
 
         //Occupying this

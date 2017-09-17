@@ -215,7 +215,7 @@ public class GridController {
         System.out.println("Exit move");
 
         if(flag) {
-            ps.setScene(new Scene(AttackController.getPane((Monster) monster, (Player) p)));
+            ps.setScene(new Scene(AttackController.getPane((Monster) monster, (Player) p), 800, 800));
         }
     }
 

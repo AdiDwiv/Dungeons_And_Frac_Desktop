@@ -75,25 +75,54 @@ public class GridController {
 //            }
 //        }
         
-        String[][] options1 = new String[3][2];
-        options1[0][0] = "Add 4";
-        options1[0][1] = "Powerful move! You hit monster for 50 hp!";
-        options1[1][0] = "Subtract 4";
-        options1[1][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
-        options1[2][0] = "Divide by 7";
-        options1[2][1] = "Not very effective - not necessary to introduce fractions. The monster dodges your attack.";
-        QState state1 = new QState(0, "7x = 28", options1);
+        String[][] options11 = new String[3][2];
+        options11[0][0] = "Add 4";
+        options11[0][1] = "Powerful move! You hit monster for 50 hp!";
+        options11[1][0] = "Subtract 4";
+        options11[1][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
+        options11[2][0] = "Divide by 7";
+        options11[2][1] = "Not very effective - not necessary to introduce fractions. The monster dodges your attack.";
+        QState state11 = new QState(0, "7x = 28", options11);
 
-        String[][] options2 = new String[3][2];
-        options1[0][0] = "Multiply by 2";
-        options1[0][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
-        options1[1][0] = "Subtract 28";
-        options1[1][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
-        options1[2][0] = "Divide by 7";
-        options1[2][1] = "Powerful move! You hit monster for 50 hp!";
-        QState state2 = new QState(0, "x = 4", options2);
+        String[][] options12 = new String[3][2];
+        options12[0][0] = "Multiply by 2";
+        options12[0][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
+        options12[1][0] = "Subtract 28";
+        options12[1][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
+        options12[2][0] = "Divide by 7";
+        options12[2][1] = "Powerful move! You hit monster for 50 hp!";
+        QState state12 = new QState(0, "x = 4", options12);
         
-        Question question1 = new Question("7x -4 = 28", new LinkedList<QState>(Arrays.asList(state1, state2)));
+        Question question1 = new Question("7x -4 = 28", new LinkedList<QState>(Arrays.asList(state11, state12)));
+        
+        String[][] options21 = new String[3][2];
+        options21[0][0] = "Find squareroot";
+        options21[0][1] = "Too early! The attack missed";
+        options21[1][0] = "Find square";
+        options21[1][1] = "That was counter-productive. The monster grew stronger.";
+        options21[2][0] = "Subtract 2";
+        options21[2][1] = "Strong move! You cut the monster's arm off for 50 hp";
+        QState state21 = new QState(2, "(x+1)^2 = 9", options21);
+
+        String[][] options22 = new String[3][2];
+        options22[0][0] = "Multiply by 5";
+        options22[0][1] = "Unneccesary move. The monster is unaffected";
+        options22[1][0] = "Find squareroot";
+        options22[1][1] = "Wham! The monster shrunk in half";
+        options22[2][0] = "Subtract 1";
+        options22[2][1] = "Too early! The attack missed";
+        QState state22 = new QState(1, "(x+1)=3", options22);
+
+        String[][] options23 = new String[3][2];
+        options23[0][0] = "Add 1";
+        options23[0][1] = "That was counter-productive. The monster grew stronger.";
+        options23[1][0] = "Subtract 1";
+        options23[1][1] = "Pow! The monster was knocked out!";
+        options23[2][0] = "Find squareroot";
+        options23[2][1] = "Too late! The monster dodged!";
+        QState state23 = new QState(1, "x=2", options23);
+        
+        Question question2 = new Question("(x + 1)^2 + 2 = 11", new LinkedList<QState>(Arrays.asList(state21, state22, state23)));
         
         //Occupying this
         Player pl = new Player("Boi", "bitch", "player.png");

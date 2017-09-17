@@ -46,7 +46,7 @@ public class GridController {
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
                 switch (map[i][j].getState()) {
-                    case VACANT: map[i][j].setImageCode("GrassSample.jpg");
+                    case VACANT: map[i][j].setImageCode("GrassBoi.png");
                         break;
                      case OBSTACLE: map[i][j].setImageCode("WaterSample.png");
                      //case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");

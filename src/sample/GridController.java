@@ -26,7 +26,7 @@ public class GridController {
     static Stage ps = Main.pstage;
 
     public static GridPane getGrid() {
-        mapGrid = new MapGrid(20, 20);
+        mapGrid = new MapGrid(15, 15);
         CellState[][] map = mapGrid.map;
         gridPane = new GridPane();
 
@@ -34,20 +34,37 @@ public class GridController {
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
                 map[i][j] = new CellState(new Location(i,j));
+                map[i][j].setImageCode("GrassBoi.png");
             }
         }
 
-        for(int i = 6; i < map.length; i++) {
-            for(int j = 3; j <= 5; j++) {
+        for(int i = 0; i <= 5; i++) {
+            for(int j = 6; j <= 8; j++) {
                 map[i][j].setState(State.OBSTACLE);
+                map[i][j].setImageCode("waterwhite.png");
             }
         }
 
-        for(int i = 6; i < map.length; i++) {
-            for(int j = 3; j <= 5; j++) {
+        for(int i = 8; i < map.length; i++) {
+            for(int j = 6; j <= 8; j++) {
                 map[i][j].setState(State.OBSTACLE);
+                map[i][j].setImageCode("waterwhite.png");
             }
         }
+
+
+//        for(int i = 0; i < map.length; i++) {
+//            for(int j = 0; j < map[0].length; j++) {
+//                switch (map[i][j].getState()) {
+//                    case VACANT: map[i][j].setImageCode("GrassBoi.png");
+//                        break;
+//                     case OBSTACLE: map[i][j].setImageCode("waterwhite.png");
+//                     //case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");
+//                        break;
+//                    default:
+//                }
+//            }
+//        }
 
         for(int i = 0; i < map.length; i++) {
             for(int j = 0; j < map[0].length; j++) {
@@ -70,6 +87,7 @@ public class GridController {
         options1[2][0] = "Divide by 7";
         options1[2][1] = "Not very effective - not necessary to introduce fractions. The monster dodges your attack.";
         QState state1 = new QState(0, "7x = 28", options1);
+<<<<<<< HEAD
         String[][] options2 = new String[3][2];
         options1[0][0] = "Multiply by 2";
         options1[0][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
@@ -81,13 +99,16 @@ public class GridController {
         
         Question question1;
         
+=======
+
+>>>>>>> 9d089342ad37076303a8d78db8f5f2a7d04148fa
 
         //Occupying this
         Player pl = new Player("Boi", "bitch", "player.png");
         pl.setSideImageCode("playerSide.png");
-        map[2][4].occupy(pl);
-        mapGrid.setPlayer(map[2][4]);
-        map[7][8].occupy(new Monster("Mon", "bitchshah", "monster.png"));
+        map[1][1].occupy(pl);
+        mapGrid.setPlayer(map[1][1]);
+        map[7][8].occupy(new Monster("Mon", "bitchshah", "monster.png", null));
         //Test END
 
 

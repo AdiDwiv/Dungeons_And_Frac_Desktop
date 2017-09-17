@@ -27,6 +27,7 @@ public class AttackController {
 	static LinkedList<QState> states;
     static QState current;
     static String eqText = "";
+    static String commentText = "Choose your attack:  ";
 
     
     private static void adjustHp(int option, Monster m, Player p) {
@@ -38,6 +39,7 @@ public class AttackController {
     	else {
     		p.setHp(p.getHp() - 10);
     	}
+    	commentText = current.options[option][1];
     }
 	
 	   public static BorderPane getPane(Monster monster, Player player) {
@@ -91,6 +93,8 @@ public class AttackController {
 	        healthM.setHeight(20); 
 	        healthM.setFill(Color.RED);
 	        healthBarM.getChildren().addAll(bgM, healthM);
+	        
+	        
 	        //healthBarM.setAlignment(healthM, Pos.TOP_RIGHT);
 	        Text qText = new Text();
 	        qText.setFont(Font.font ("Verdana", 30));
@@ -106,8 +110,8 @@ public class AttackController {
 	        
 	        HBox menu = new HBox(5);
 	        menu.setStyle("-fx-background-color: white;");
-	        Text text = new Text();
-	        text.setText("Choose your attack:  ");
+	        Text comment = new Text();
+	        comment.setText(commentText);
 	        Button btn1 = new Button();
 	        btn1.setText(current.options[0][0]);
 	        Button btn2 = new Button();
@@ -136,7 +140,7 @@ public class AttackController {
 	         btn2.setOnAction(eventHandler);
 	         btn3.setOnAction(eventHandler);
 	        
-	        menu.getChildren().addAll(text, btn1, btn2, btn3);
+	        menu.getChildren().addAll(comment, btn1, btn2, btn3);
 	        attackPane.setBottom(menu);
 	        return attackPane;
 	    }

@@ -9,6 +9,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -74,7 +75,12 @@ public class AttackController {
 	        healthM.setHeight(20); 
 	        healthM.setFill(Color.RED);
 	        healthBarM.getChildren().addAll(bgM, healthM);
-	        monsterBox.getChildren().addAll(healthBarM, monsterView);
+	        Text qText = new Text();
+	        qText.setFont(Font.font ("Verdana", 30));
+	        qText.setFill(Color.WHITE);
+	        qText.setText(monster.getQ().equation);
+	        
+	        monsterBox.getChildren().addAll(healthBarM, monsterView, qText);
 	        attackPane.setRight(monsterBox); 
 	        
 	        HBox menu = new HBox(5);

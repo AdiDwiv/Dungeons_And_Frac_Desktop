@@ -9,7 +9,7 @@ public class Monster extends GCharacter {
 	public LinkedList<String> attacks;*/
     private Question q;
 
-    public Monster(String name,String display,String imageCode, Question q) {
+	public Monster(String name,String display,String imageCode, Question q) {
        super(name, display, imageCode);
        this.q = q;
        //reducedExpressions = new LinkedList<String >();
@@ -23,6 +23,10 @@ public class Monster extends GCharacter {
         this.hp = hp;
     }
 
+    public Question getQ() {
+		return q;
+	}
+    
     public void addReducedExpression(String redex) {
         //reducedExpressions.add(redex);
         hp += 1;

@@ -334,6 +334,36 @@ public class GridController {
         QState state23 = new QState(1, "x=2", options23);
 
         Question question2 = new Question("(x + 1)^2 + 2 = 11", new LinkedList<QState>(Arrays.asList(state21, state22, state23)));
+        
+
+        		String[][] options31 = new String[3][2];
+        		        options31[0][0] = "Apply distributive law";
+        		        options31[0][1] = "Whoosh! A gust blew to reveal that the giant monster was in fact 2 smaller ones.";
+        		        options31[1][0] = "Subtract 1";
+        		        options31[1][1] = "The monster deflected the attack. No loss of HP!";
+        		        options31[2][0] = "Find Square root";
+        		        options31[2][1] = "That was dangerous. The monster became bigger in size";
+        		        QState state31 = new QState(0, "y = ((cosec^2(x)-1)(sec^2(x)-1))", options31);
+
+        		String[][] options32 = new String[3][2];
+        		        options32[0][0] = "Divide by sec^2(x) - 1";
+        		        options32[0][1] = "That move had no effect.";
+        		        options32[1][0] = "Subtract 1";
+        		        options32[1][1] = "The monster easily dodged the attack! Not effective.";
+        		        options32[2][0] = "Apply Pythagorean identity";
+        		        options32[2][1] = "Boom! The monster took 33 HP damage!";
+        		        QState state32 = new QState(2, "y = cot^2(x)*tan^2(x)", options32);
+
+        		String[][] options33 = new String[3][2];
+        		        options33[0][0] = "Apply reciprocal identity";
+        		        options33[0][1] = "Powerful blow. The monster was knocked out!";
+        		        options33[1][0] = "Apply Pythagorean theorem";
+        		        options33[1][1] = "The monster dodged. Never repeat your moves!";
+        		        options33[2][0] = "Add tan^2(x)";
+        		        options33[2][1] = "That had no effect on the monster.";
+        		        QState state33 = new QState(0, "y = 1", options33);
+        		        
+        	    Question question3 = new Question("y = cosec^2(x)sec^2(x) - cosec^2(x) - sec^2(x) + 1", new LinkedList<QState>(Arrays.asList(state31, state32, state33)));
 
         //Occupying this
         Player pl = new Player("Boi", "bitch", "player.png");

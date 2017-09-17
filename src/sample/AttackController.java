@@ -33,7 +33,7 @@ public class AttackController {
     private static void adjustHp(int option, Monster m, Player p) {
     	if (option == current.correct) {
     		m.setHp(m.getHp() - (100/(m.getQ().steps)));
-    		states.pop();
+    		if (states.size() >= 1) states.pop();
     		eqText = current.nextReduced;
     	}
     	else {
@@ -48,8 +48,10 @@ public class AttackController {
 			playerImg = new Image("./resource/media/"+player.getSideImageCode());
 			hpM = monster.getHp();
 			hpP = player.getHp();
-			states = monster.getQ().states;
-			current = states.peek();
+			if (states == null) {
+				states = monster.getQ().states;
+			}
+			if (states.size() >= 1) current = states.peek();
 		   
 	        BorderPane attackPane = new BorderPane();
 	        attackPane.setPadding(new Insets(300, 100, 80, 70));
@@ -132,14 +134,13 @@ public class AttackController {
 	                	adjustHp(2, monster, player);
 	                }
 	         	   qText.setText(eqText);
-	         	   if (monster.getHp() > 0 && player.getHp() > 0) {
+	         	   System.out.println(monster.getHp());
 	         	   Main.pstage.setScene(new Scene(getPane(monster, player)));
-	         	   }
-	         	   else if (monster.getHp() > 0) {
+	         	   if (player.getHp() <= 0) {
 	         		  Main.pstage.setScene(new Scene(EndScreen.getEndScreen(false)));
 	         	   }
-	         	   else {
-	         	//	  Main.pstage.setScene(new Scene(GridController.gridPane));
+	         	  if (monster.getHp() <= 0) {
+	         		  Main.pstage.setScene(new Scene(GridController.getGrid()));
 	         	   }
 	         	   }     
 	         }; 

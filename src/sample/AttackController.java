@@ -28,7 +28,7 @@ public class AttackController {
 	   public static BorderPane getPane(Monster monster, Player player) {
 			//expressions = monster.reducedExpressions;
 			monsterImg = new Image("./resource/media/"+monster.getImageCode());
-			playerImg = new Image("./resource/media/"+player.getImageCode());
+			playerImg = new Image("./resource/media/"+player.getSideImageCode());
 			hpM = monster.getHp();
 			hpP = player.getHp();
 		   

@@ -5,11 +5,14 @@ import java.util.LinkedList;
 public class Monster extends GCharacter {
     int hp;
 
-	public LinkedList<String> reducedExpressions;
+	/*public LinkedList<String> reducedExpressions;
+	public LinkedList<String> attacks;*/
+    private Question q;
 
-    public Monster(String name,String display,String imageCode) {
+    public Monster(String name,String display,String imageCode, Question q) {
        super(name, display, imageCode);
-       reducedExpressions = new LinkedList<String >();
+       this.q = q;
+       //reducedExpressions = new LinkedList<String >();
     }
     
     public int getHp() {
@@ -21,7 +24,7 @@ public class Monster extends GCharacter {
     }
 
     public void addReducedExpression(String redex) {
-        reducedExpressions.add(redex);
+        //reducedExpressions.add(redex);
         hp += 1;
     }
 }

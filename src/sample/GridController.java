@@ -7,6 +7,10 @@ import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javafx.stage.Stage;
 import resource.*;
 
 import javax.swing.text.View;
@@ -17,6 +21,9 @@ public class GridController {
 
     static MapGrid mapGrid;
     static GridPane gridPane;
+    static CellState moveTo;
+
+    static Stage ps = Main.pstage;
 
     public static GridPane getGrid() {
         mapGrid = new MapGrid(10, 10);
@@ -160,10 +167,26 @@ public class GridController {
                         //TODO: move player
                         System.out.println("click");
                         Location playerLoc = mapGrid.getPlayer().getLocation();
-                        System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
-                        LinkedList<CellState> path = mapGrid.getPath(playerLoc, map[sp.x][sp.y].getLocation());
+                        //System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
+                        LinkedList<CellState> path = mapGrid.getPath(new Location(playerLoc.x, playerLoc.y), map[sp.x][sp.y].getLocation());
                         System.out.println(path.size());
                         System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
+                        path.removeFirst();
+                        for(CellState cs: path) {
+                            moveTo = cs;
+                            System.out.println("To Move To: "+cs.getLocation().x+" "+cs.getLocation().y);
+                            if(moveTo != null)
+                                GridController.moveCell();
+//                            new Timer().scheduleAtFixedRate(new TimerTask(){
+//                                @Override
+//                                public void run(){
+//                                    if(moveTo != null)
+//                                        GridController.moveCell();
+//                                }
+//                            },0,5000);
+
+                        }
+                        ps.setScene(new Scene(GridController.gridPane, 800, 800));
                         break;
                     case OBSTACLE:
                         //nothing for now
@@ -172,41 +195,24 @@ public class GridController {
                         //nothing for now
                         break;
                 }
-               
-               sp.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            	    @Override
-            	    public void handle(MouseEvent mouseEvent) {
-            	    	switch (map[sp.x][sp.y].getState()) {
-            	    	 case VACANT:
-            	    	 //TODO: move player
-                             System.out.println("click");
-                             Location playerLoc = mapGrid.getPlayer().getLocation();
-                             System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
-                             
-                             LinkedList<CellState> path = mapGrid.getPath(playerLoc, map[sp.x][sp.y].getLocation());
-                             System.out.println(path.size());
-                             System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
-               	    	 break;
-            	    	 case OBSTACLE:
-            	    	 //nothing for now
-                   	     break;
-                       	 default:
-                       	//nothing for now
-                       	 break;
-            	    	}
-            	    }
-            	});
             }
         });
     }
 
-    public static void moveCell(CellState moveTo) {
+    public static void moveCell() {
+        System.out.println("Enter move");
         if(moveTo.getState() == State.VACANT) {
+
             CellState playerOri = mapGrid.getPlayer();
             GCharacter p = playerOri.getOccupier();
             playerOri.unoccupy();
             moveTo.occupy(p);
-
+            mapGrid.setPlayer(moveTo);
+            System.out.println("PlayerOri: "+playerOri.getLocation().x+" "+playerOri.getLocation().y);
+            System.out.println("MoveTo: "+moveTo.getLocation().x+" "+moveTo.getLocation().y);
+            populateCell(playerOri.getLocation().x, playerOri.getLocation().y);
+            populateCell(moveTo.getLocation().x, moveTo.getLocation().y);
+            System.out.println("Exit move");
         }
     }
 

@@ -363,14 +363,14 @@ public class GridController {
         		        options33[2][1] = "That had no effect on the monster.";
         		        QState state33 = new QState(0, "y = 1", options33);
         		        
-        	    Question question3 = new Question("y = cosec^2(x)sec^2(x) - cosec^2(x) - sec^2(x) + 1", new LinkedList<QState>(Arrays.asList(state31, state32, state33)));
+        	    Question question3 = new Question("y = cosec^2(x)sec^2(x)\n - cosec^2(x) - sec^2(x) + 1", new LinkedList<QState>(Arrays.asList(state31, state32, state33)));
 
         //Occupying this
         Player pl = new Player("Boi", "bitch", "player.png");
         pl.setSideImageCode("playerSide.png");
         map[1][1].occupy(pl);
         mapGrid.setPlayer(map[1][1]);
-        map[11][17].occupy(new Monster("Mon", "bitchshah", "monster.png", question2));
+        map[11][17].occupy(new Monster("Mon", "bitchshah", "monster.png", question3));
         //Test END
 
 

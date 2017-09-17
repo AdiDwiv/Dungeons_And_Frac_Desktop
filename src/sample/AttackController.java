@@ -32,7 +32,7 @@ public class AttackController {
     
     private static void adjustHp(int option, Monster m, Player p) {
     	if (option == current.correct) {
-    		m.setHp(m.getHp() - (100/(m.getQ().steps)));
+    		m.setHp((int) (m.getHp() - (Math.ceil((100/(m.getQ().steps))))));
     		if (states.size() >= 1) states.pop();
     		eqText = current.nextReduced;
     	}
@@ -57,7 +57,7 @@ public class AttackController {
 	        attackPane.setPadding(new Insets(300, 100, 80, 70));
 
 	        //battle image
-	        attackPane.setStyle("-fx-background-image: url(\"./resource/media/GrassSample.jpg\");-fx-background-size: 500, 500;-fx-background-repeat: repeat;");
+	        attackPane.setStyle("-fx-background-image: url(\"./resource/media/battleBg.png\");-fx-background-size: cover;-fx-background-repeat: no-repeat;");
 	        
 	        FlowPane playerBox = new FlowPane(Orientation.VERTICAL);
 	        playerBox.setVgap(10);
@@ -100,7 +100,7 @@ public class AttackController {
 	        //healthBarM.setAlignment(healthM, Pos.TOP_RIGHT);
 	        Text qText = new Text();
 	        qText.setFont(Font.font ("Verdana", 30));
-	        qText.setFill(Color.WHITE);
+	        qText.setFill(Color.BLACK);
 	        if (eqText == "") { 
 	        	qText.setText(monster.getQ().equation);
 	        }

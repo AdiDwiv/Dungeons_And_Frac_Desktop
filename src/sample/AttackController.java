@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
@@ -39,10 +40,16 @@ public class AttackController {
 	        playerView.setFitWidth(100);
 	        playerView.setImage(playerImg);
 	        
-	        Rectangle statusP = new Rectangle();
-	        statusP.setWidth(100);
-	        statusP.setHeight(20); 
-	        playerBox.getChildren().addAll(statusP, playerView);
+	        StackPane healthBarP = new StackPane();
+	        Rectangle bgP = new Rectangle();
+	        bgP.setWidth(100);
+	        bgP.setHeight(20); 
+	        Rectangle healthP = new Rectangle();
+	        healthP.setWidth(hpP);
+	        healthP.setHeight(20); 
+	        healthP.setFill(Color.RED);
+	        healthBarP.getChildren().addAll(bgP, healthP);
+	        playerBox.getChildren().addAll(healthBarP, playerView);
 	        
 	        attackPane.setCenter(playerBox);
 	        
@@ -53,10 +60,16 @@ public class AttackController {
 	        monsterView.setFitWidth(100);
 	        monsterView.setImage(monsterImg);
 
-	        Rectangle statusM = new Rectangle();
-	        statusM.setWidth(100);
-	        statusM.setHeight(20);
-	        monsterBox.getChildren().addAll(statusM, monsterView);
+	        StackPane healthBarM = new StackPane();
+	        Rectangle bgM = new Rectangle();
+	        bgM.setWidth(100);
+	        bgM.setHeight(20);
+	        Rectangle healthM = new Rectangle();
+	        healthM.setWidth(hpM);
+	        healthM.setHeight(20); 
+	        healthM.setFill(Color.RED);
+	        healthBarM.getChildren().addAll(bgM, healthM);
+	        monsterBox.getChildren().addAll(healthBarM, monsterView);
 	        
 	        attackPane.setRight(monsterBox);
 	        

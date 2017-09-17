@@ -46,6 +46,14 @@ public class GridController {
             }
         }
 
+        System.out.println("Test");
+        for(int i = 6; i <= 7; i++) {
+            for(int j = 6; j <= 8; j++) {
+                System.out.println("Testatat");
+                map[i][j].setImageCode("bridgeComponent.png");
+            }
+        }
+
         for(int i = 8; i < map.length; i++) {
             for(int j = 6; j <= 8; j++) {
                 map[i][j].setState(State.OBSTACLE);
@@ -66,19 +74,6 @@ public class GridController {
 //                }
 //            }
 //        }
-
-        for(int i = 0; i < map.length; i++) {
-            for(int j = 0; j < map[0].length; j++) {
-                switch (map[i][j].getState()) {
-                    case VACANT: map[i][j].setImageCode("GrassBoi.png");
-                        break;
-                     case OBSTACLE: map[i][j].setImageCode("waterwhite.png");
-                     //case OBSTACLE: map[i][j].setImageCode("WaterSample.jpg");
-                        break;
-                    default:
-                }
-            }
-        }
         
         String[][] options1 = new String[3][2];
         options1[0][0] = "Add 4";

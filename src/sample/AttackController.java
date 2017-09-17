@@ -25,6 +25,16 @@ public class AttackController {
 	static int hpM, hpP;
 	static LinkedList<QState> states;
     static QState current;
+
+    
+    private static void adjustHp(int option, Monster m, Player p) {
+    	if (option == current.correct) {
+    		m.setHp(m.getHp() - (100/(m.getQ().steps)));
+    	}
+    	else {
+    		p.setHp(p.getHp() - 10);
+    	}
+    }
 	
 	   public static BorderPane getPane(Monster monster, Player player) {
 			//expressions = monster.reducedExpressions;
@@ -100,22 +110,15 @@ public class AttackController {
 	            @Override 
 	            public void handle(ActionEvent e) { 
 	         	   if (e.getSource()==btn1) {
-	         		   if (current.correct != 0) {
-	         			   player.setHp(player.getHp() - 10);
-	         		   }
-	         		   
-	    
+	         		   adjustHp(0, monster, player);
 	         	      }
 	                else  if (e.getSource()==btn2) {
-	                	if (current.correct != 1) {
-	                		player.setHp(player.getHp() - 10);
-		         		   }
+	                	adjustHp(1, monster, player);
 	                  }
 	                else if (e.getSource()==btn3){
-	                	if (current.correct != 2) {
-	                		player.setHp(player.getHp() - 10);
-		         		   }
+	                	adjustHp(2, monster, player);
 	                }
+	         	   Main.pstage.setScene(new Scene(getPane(monster, player)));
 	         	   }     
 	         }; 
 	        

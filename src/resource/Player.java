@@ -9,6 +9,10 @@ public class Player extends GCharacter {
         super(name, display, imageCode);
         hp = 0;
     }
+    
+    public int getHp() {
+		return hp;
+	}
 
     public void setHp(int hp) {
         this.hp = hp;

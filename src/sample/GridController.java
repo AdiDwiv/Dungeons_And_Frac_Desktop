@@ -173,6 +173,8 @@ public class GridController {
                         //System.out.println(path.size());
                         System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
                         moveTo = map[sp.x][sp.y];
+                        if(playerLoc.x == sp.x && playerLoc.y == sp.y)
+                            break;
                         if(moveTo != null)
                             GridController.moveCell();
                         try {
@@ -193,19 +195,27 @@ public class GridController {
     }
 
     public static void moveCell() {
-        System.out.println("Enter move");
-        if(moveTo.getState() == State.VACANT) {
+        boolean flag = false;
+        GCharacter monster = null;
+        if(moveTo.isOccupied) {
+            flag = true;
+            monster = moveTo.getOccupier();
+        }
 
-            CellState playerOri = mapGrid.getPlayer();
-            GCharacter p = playerOri.getOccupier();
-            playerOri.unoccupy();
-            moveTo.occupy(p);
-            mapGrid.setPlayer(moveTo);
-            System.out.println("PlayerOri: "+playerOri.getLocation().x+" "+playerOri.getLocation().y);
-            System.out.println("MoveTo: "+moveTo.getLocation().x+" "+moveTo.getLocation().y);
-            populateCell(playerOri.getLocation().x, playerOri.getLocation().y);
-            populateCell(moveTo.getLocation().x, moveTo.getLocation().y);
-            System.out.println("Exit move");
+        System.out.println("Enter move");
+        CellState playerOri = mapGrid.getPlayer();
+        GCharacter p = playerOri.getOccupier();
+        playerOri.unoccupy();
+        moveTo.occupy(p);
+        mapGrid.setPlayer(moveTo);
+        System.out.println("PlayerOri: "+playerOri.getLocation().x+" "+playerOri.getLocation().y);
+        System.out.println("MoveTo: "+moveTo.getLocation().x+" "+moveTo.getLocation().y);
+        populateCell(playerOri.getLocation().x, playerOri.getLocation().y);
+        populateCell(moveTo.getLocation().x, moveTo.getLocation().y);
+        System.out.println("Exit move");
+
+        if(flag) {
+            ps.setScene(new Scene(AttackController.getPane((Monster) monster, (Player) p)));
         }
     }
 

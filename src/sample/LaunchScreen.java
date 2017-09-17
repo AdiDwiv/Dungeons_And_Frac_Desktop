@@ -3,12 +3,14 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -30,28 +32,41 @@ public class LaunchScreen {
         buttonGrid.setPadding(new Insets(25, 25, 25, 25));
         buttonGrid.setStyle("-fx-background-color: #000000;");
         
-        Image logo = new Image("./resource/media/GrassSample.jpg");
+        FlowPane main = new FlowPane(Orientation.VERTICAL);
+        
+        FlowPane logo = new FlowPane();
+        Image logoImg = new Image("./resource/media/dnf.png");
         ImageView logoView = new ImageView();
-        logoView.setImage(logo);
-        logoView.setFitWidth(100);
-        logoView.setFitHeight(50);
-        buttonGrid.add(logoView, 1, 0);
-
+        logoView.setImage(logoImg);
+        logoView.prefWidth(100);
+        logoView.prefHeight(50);
+        logo.getChildren().add(logoView);
+        
+        main.getChildren().add(logo);
+        //buttonGrid.add(logo, 1, 0);
+        
+        GridPane buttonGrid2 = new GridPane();
+        buttonGrid2.setHgap(10);
+        buttonGrid2.setVgap(10);
+        buttonGrid2.setPadding(new Insets(25, 100, 25, 350));
         Button newGame = new Button("New Game");
-        newGame.setAlignment(Pos.CENTER);
+        newGame.setAlignment(Pos.CENTER_RIGHT);
         newGame.setStyle("-fx-background-color: #C0C0C0;");
-        buttonGrid.add(newGame, 1, 1);
+        buttonGrid2.add(newGame, 1, 1);
         
 
         Button loadGame = new Button("Load Game");
         loadGame.setAlignment(Pos.CENTER);
         loadGame.setStyle("-fx-background-color: #C0C0C0;");
-        buttonGrid.add(loadGame, 1, 2);
+        buttonGrid2.add(loadGame, 1, 2);
         
         Button howToPlay = new Button("How to Play");
         howToPlay.setAlignment(Pos.CENTER);
         howToPlay.setStyle("-fx-background-color: #C0C0C0;");
-        buttonGrid.add(howToPlay, 1, 3);
+        buttonGrid2.add(howToPlay, 1, 3);
+        main.getChildren().add(buttonGrid2);
+        
+        buttonGrid.add(main, 1, 0);
         
         newGame.setMinWidth(100);
         loadGame.setMinWidth(100);
@@ -73,6 +88,7 @@ public class LaunchScreen {
         howToPlay.setOnAction(eventHandler);
         
         return buttonGrid;
+       // return main;
 	}
 	
 	

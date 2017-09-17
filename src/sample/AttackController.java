@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -25,11 +26,14 @@ public class AttackController {
 	static int hpM, hpP;
 	static LinkedList<QState> states;
     static QState current;
+    static String eqText = "";
 
     
     private static void adjustHp(int option, Monster m, Player p) {
     	if (option == current.correct) {
     		m.setHp(m.getHp() - (100/(m.getQ().steps)));
+    		states.pop();
+    		eqText = current.nextReduced;
     	}
     	else {
     		p.setHp(p.getHp() - 10);
@@ -87,11 +91,16 @@ public class AttackController {
 	        healthM.setHeight(20); 
 	        healthM.setFill(Color.RED);
 	        healthBarM.getChildren().addAll(bgM, healthM);
+	        //healthBarM.setAlignment(healthM, Pos.TOP_RIGHT);
 	        Text qText = new Text();
 	        qText.setFont(Font.font ("Verdana", 30));
 	        qText.setFill(Color.WHITE);
-	        qText.setText(monster.getQ().equation);
-	        
+	        if (eqText == "") { 
+	        	qText.setText(monster.getQ().equation);
+	        }
+	        else {
+	        	qText.setText(eqText);
+	        }
 	        monsterBox.getChildren().addAll(healthBarM, monsterView, qText);
 	        attackPane.setRight(monsterBox); 
 	        
@@ -118,6 +127,7 @@ public class AttackController {
 	                else if (e.getSource()==btn3){
 	                	adjustHp(2, monster, player);
 	                }
+	         	   qText.setText(eqText);
 	         	   Main.pstage.setScene(new Scene(getPane(monster, player)));
 	         	   }     
 	         }; 

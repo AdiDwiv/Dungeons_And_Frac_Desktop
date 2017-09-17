@@ -61,6 +61,18 @@ public class GridController {
                 }
             }
         }
+        
+        String[][] options1 = new String[3][2];
+        options1[0][0] = "Add 4";
+        options1[0][1] = "Powerful move! You hit monster for 50 hp!";
+        options1[1][0] = "Subtract 4";
+        options1[1][1] = "Not very effective - this does not simplify the equation any further. The monster dodges your attack.";
+        options1[2][0] = "Divide by 7";
+        options1[2][1] = "Not very effective - not necessary to introduce fractions. The monster dodges your attack.";
+        
+        
+        QState state1 = new QState(0, "7x = 28", options1);
+        
 
         //Occupying this
         Player pl = new Player("Boi", "bitch", "player.png");

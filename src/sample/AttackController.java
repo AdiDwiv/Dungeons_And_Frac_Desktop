@@ -32,7 +32,7 @@ public class AttackController {
 			hpP = player.getHp();
 		   
 	        BorderPane attackPane = new BorderPane();
-	        attackPane.setPadding(new Insets(300, 100, 10, 70));
+	        attackPane.setPadding(new Insets(300, 100, 80, 70));
 
 	        //battle image
 	        attackPane.setStyle("-fx-background-image: url(\"./resource/media/GrassSample.jpg\");-fx-background-size: 500, 500;-fx-background-repeat: repeat;");

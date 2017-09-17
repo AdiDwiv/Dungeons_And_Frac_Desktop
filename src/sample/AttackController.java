@@ -17,14 +17,14 @@ import javafx.scene.image.*;
 import javafx.stage.Stage;
 import resource.Monster;
 import resource.Player;
+import resource.QState;
 
 public class AttackController {
 	
-	//static LinkedList<String> expressions;
-	
 	static Image monsterImg, playerImg;
 	static int hpM, hpP;
-	static int[] attacks = new int[3];
+	static LinkedList<QState> states;
+    static QState current;
 	
 	   public static BorderPane getPane(Monster monster, Player player) {
 			//expressions = monster.reducedExpressions;
@@ -32,6 +32,8 @@ public class AttackController {
 			playerImg = new Image("./resource/media/"+player.getSideImageCode());
 			hpM = monster.getHp();
 			hpP = player.getHp();
+			states = monster.getQ().states;
+			current = states.peek();
 		   
 	        BorderPane attackPane = new BorderPane();
 	        attackPane.setPadding(new Insets(300, 100, 80, 70));
@@ -88,11 +90,11 @@ public class AttackController {
 	        Text text = new Text();
 	        text.setText("Choose your attack:  ");
 	        Button btn1 = new Button();
-	        btn1.setText("1");
+	        btn1.setText(current.options[0][0]);
 	        Button btn2 = new Button();
-	        btn2.setText("2");
+	        btn2.setText(current.options[1][0]);
 	        Button btn3 = new Button();
-	        btn3.setText("3");
+	        btn3.setText(current.options[2][0]);
 	        
 	        EventHandler<ActionEvent> eventHandler = new EventHandler<ActionEvent>() { 
 	            @Override 

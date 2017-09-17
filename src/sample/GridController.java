@@ -57,7 +57,9 @@ public class GridController {
         }
 
         //Occupying this
-        map[2][4].occupy(new Player("Boi", "bitch", "player.png"));
+        Player pl = new Player("Boi", "bitch", "player.png");
+        pl.setSideImageCode("playerSide.png");
+        map[2][4].occupy(pl);
         mapGrid.setPlayer(map[2][4]);
         map[7][8].occupy(new Monster("Mon", "bitchshah", "monster.png"));
         //Test END

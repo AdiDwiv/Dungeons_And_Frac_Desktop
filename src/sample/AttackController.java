@@ -27,7 +27,7 @@ public class AttackController {
 	   public static BorderPane getPane(Monster monster, Player player) {
 			expressions = monster.reducedExpressions;
 			monsterImg = new Image("./resource/media/"+monster.getImageCode());
-			playerImg = new Image("./resource/media/"+player.getImageCode());
+			playerImg = new Image("./resource/media/"+player.getSideImageCode());
 			hpM = monster.getHp();
 			hpP = player.getHp();
 		   
@@ -40,8 +40,8 @@ public class AttackController {
 	        FlowPane playerBox = new FlowPane(Orientation.VERTICAL);
 	        playerBox.setVgap(10);
 	        ImageView playerView = new ImageView();
-	        playerView.setFitHeight(100);
-	        playerView.setFitWidth(100);
+	        playerView.setFitHeight(150);
+	        playerView.setFitWidth(150);
 	        playerView.setImage(playerImg);
 	        
 	        StackPane healthBarP = new StackPane();
@@ -60,8 +60,8 @@ public class AttackController {
 	        FlowPane monsterBox = new FlowPane(Orientation.VERTICAL);
 	        monsterBox.setVgap(10);
 	        ImageView monsterView = new ImageView();
-	        monsterView.setFitHeight(100);
-	        monsterView.setFitWidth(100);
+	        monsterView.setFitHeight(150);
+	        monsterView.setFitWidth(150);
 	        monsterView.setImage(monsterImg);
 
 	        StackPane healthBarM = new StackPane();

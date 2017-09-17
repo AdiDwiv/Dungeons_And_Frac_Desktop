@@ -132,7 +132,15 @@ public class AttackController {
 	                	adjustHp(2, monster, player);
 	                }
 	         	   qText.setText(eqText);
+	         	   if (monster.getHp() > 0 && player.getHp() > 0) {
 	         	   Main.pstage.setScene(new Scene(getPane(monster, player)));
+	         	   }
+	         	   else if (monster.getHp() > 0) {
+	         		  Main.pstage.setScene(new Scene(EndScreen.getEndScreen(false)));
+	         	   }
+	         	   else {
+	         	//	  Main.pstage.setScene(new Scene(GridController.gridPane));
+	         	   }
 	         	   }     
 	         }; 
 	        

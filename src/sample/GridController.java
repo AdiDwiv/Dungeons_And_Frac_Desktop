@@ -340,7 +340,7 @@ public class GridController {
         pl.setSideImageCode("playerSide.png");
         map[1][1].occupy(pl);
         mapGrid.setPlayer(map[1][1]);
-        map[11][17].occupy(new Monster("Mon", "bitchshah", "monster.png", question1));
+        map[11][17].occupy(new Monster("Mon", "bitchshah", "monster.png", question2));
         //Test END
 
 

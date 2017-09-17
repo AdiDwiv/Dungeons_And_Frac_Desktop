@@ -6,6 +6,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -17,6 +18,7 @@ public class EndScreen {
 		 FlowPane flowPane = new FlowPane(Orientation.VERTICAL);
 		 flowPane.setStyle("-fx-background-color: #000000;");
 		 Text statusText = new Text();
+		 statusText.setFill(Color.WHITE);
 		 if (won) {
 			 statusText.setText("Congratulations! You defeated the monster!"); 
 		 } 

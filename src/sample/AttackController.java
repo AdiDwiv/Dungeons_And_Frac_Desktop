@@ -2,12 +2,15 @@ package sample;
 import java.util.LinkedList;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.*;
 import javafx.stage.Stage;
@@ -19,6 +22,7 @@ public class AttackController {
 	static LinkedList<String> expressions;
 	static Image monsterImg, playerImg;
 	static int hpM, hpP;
+	static int[] attacks = new int[3];
 	
 	   public static BorderPane getPane(Monster monster, Player player) {
 			expressions = monster.reducedExpressions;
@@ -70,10 +74,9 @@ public class AttackController {
 	        healthM.setFill(Color.RED);
 	        healthBarM.getChildren().addAll(bgM, healthM);
 	        monsterBox.getChildren().addAll(healthBarM, monsterView);
+	        attackPane.setRight(monsterBox); 
 	        
-	        attackPane.setRight(monsterBox);
-	        
-	        HBox menu = new HBox();
+	        HBox menu = new HBox(5);
 	        menu.setStyle("-fx-background-color: white;");
 	        Text text = new Text();
 	        text.setText("Choose your attack:  ");
@@ -83,6 +86,26 @@ public class AttackController {
 	        btn2.setText("2");
 	        Button btn3 = new Button();
 	        btn3.setText("3");
+	        
+	        EventHandler<ActionEvent> eventHandler = new EventHandler<ActionEvent>() { 
+	            @Override 
+	            public void handle(ActionEvent e) { 
+	         	   if (e.getSource()==btn1) {
+	         		//attacks[0]
+	         	      }
+	                else  if (e.getSource()==btn2) {
+	                	//attacks[1]
+	                  }
+	                else if (e.getSource()==btn3){
+	                	//attacks[2]
+	                }
+	         	   }     
+	         }; 
+	        
+	         btn1.setOnAction(eventHandler);
+	         btn2.setOnAction(eventHandler);
+	         btn3.setOnAction(eventHandler);
+	        
 	        menu.getChildren().addAll(text, btn1, btn2, btn3);
 	        attackPane.setBottom(menu);
 	        return attackPane;

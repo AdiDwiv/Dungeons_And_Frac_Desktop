@@ -168,25 +168,18 @@ public class GridController {
                         System.out.println("click");
                         Location playerLoc = mapGrid.getPlayer().getLocation();
                         //System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
-                        LinkedList<CellState> path = mapGrid.getPath(new Location(playerLoc.x, playerLoc.y), map[sp.x][sp.y].getLocation());
-                        System.out.println(path.size());
+                        //LinkedList<CellState> path = mapGrid.getPath(new Location(playerLoc.x, playerLoc.y), map[sp.x][sp.y].getLocation());
+                        //path.removeFirst();
+                        //System.out.println(path.size());
                         System.out.println(playerLoc.x+" "+playerLoc.y+" "+" click: "+sp.x+" "+sp.y);
-                        path.removeFirst();
-                        for(CellState cs: path) {
-                            moveTo = cs;
-                            System.out.println("To Move To: "+cs.getLocation().x+" "+cs.getLocation().y);
-                            if(moveTo != null)
-                                GridController.moveCell();
-//                            new Timer().scheduleAtFixedRate(new TimerTask(){
-//                                @Override
-//                                public void run(){
-//                                    if(moveTo != null)
-//                                        GridController.moveCell();
-//                                }
-//                            },0,5000);
-
-                        }
-                        ps.setScene(new Scene(GridController.gridPane, 800, 800));
+                        moveTo = map[sp.x][sp.y];
+                        if(moveTo != null)
+                            GridController.moveCell();
+                        try {
+                            ps.setScene(new Scene(GridController.gridPane, 800, 800));
+                        } catch(Exception e) {
+                            System.out.println(e.getStackTrace());
+                         }
                         break;
                     case OBSTACLE:
                         //nothing for now

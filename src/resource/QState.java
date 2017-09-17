@@ -1,8 +1,8 @@
 package resource;
 
 public class QState {
-	private int correct;
-	private String nextReduced;
+	public int correct;
+	public String nextReduced;
 	public String[][] options;
 	
 	public QState(int correct, String nextReduced, String[][] options) {

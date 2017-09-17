@@ -100,13 +100,21 @@ public class AttackController {
 	            @Override 
 	            public void handle(ActionEvent e) { 
 	         	   if (e.getSource()==btn1) {
-	         		//attacks[0]
+	         		   if (current.correct != 0) {
+	         			   player.setHp(player.getHp() - 10);
+	         		   }
+	         		   
+	    
 	         	      }
 	                else  if (e.getSource()==btn2) {
-	                	//attacks[1]
+	                	if (current.correct != 1) {
+	                		player.setHp(player.getHp() - 10);
+		         		   }
 	                  }
 	                else if (e.getSource()==btn3){
-	                	//attacks[2]
+	                	if (current.correct != 2) {
+	                		player.setHp(player.getHp() - 10);
+		         		   }
 	                }
 	         	   }     
 	         }; 

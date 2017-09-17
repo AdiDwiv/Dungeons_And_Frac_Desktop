@@ -8,7 +8,7 @@ public class Player extends GCharacter {
 
     public Player(String name,String display,String imageCode) {
         super(name, display, imageCode);
-        hp = 0;
+        hp = 100;
     }
     
     public int getHp() {

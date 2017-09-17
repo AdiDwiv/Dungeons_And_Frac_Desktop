@@ -12,6 +12,7 @@ public class Monster extends GCharacter {
 	public Monster(String name,String display,String imageCode, Question q) {
        super(name, display, imageCode);
        this.q = q;
+       hp = 100;
        //reducedExpressions = new LinkedList<String >();
     }
     
